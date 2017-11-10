@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 19:41:28 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/10 20:05:55 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	while (1)
+	char *d;
+	char *s;
+
+	*s = src;
+	*d = dst;
+	while (s && len)
 	{
-		if (*s == c)
-			return ((char *)c);
-		if (*s++ == '\0')
-			return (NULL);
+		*d++ = *s++;
+		len--;
 	}
+	return (dst)
 }

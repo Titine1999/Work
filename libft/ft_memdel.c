@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 20:58:17 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/10 21:14:14 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include <stdlib.h>
+#include <string.h>
+
+void	ft_memdel(void **ap)
 {
-	while (1)
-	{
-		if (*s == c)
-			return ((char *)c);
-		if (*s++ == '\0')
-			return (NULL);
-	}
+	Free(*ap);
+	*ap = NULL;
 }

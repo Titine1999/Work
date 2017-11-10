@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 18:56:26 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/10 19:06:52 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include <string.h>
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	while (1)
+	unsigned char	*a;
+
+	a = b;
+	while (len != 0)
 	{
-		if (*s == c)
-			return ((char *)c);
-		if (*s++ == '\0')
-			return (NULL);
+		*a++ = (unsigned char)c;
+		len--;
 	}
+	return (b);
 }

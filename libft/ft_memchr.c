@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 20:07:18 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/10 20:10:50 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include <string.h>
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (1)
-	{
-		if (*s == c)
-			return ((char *)c);
-		if (*s++ == '\0')
-			return (NULL);
-	}
+	while(s && *s != (unsigned char)c)
+		*s++;
+	if (*s == '\0')
+		return (NULL);
+	return (s);
 }

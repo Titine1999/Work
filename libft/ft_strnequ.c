@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 21:09:51 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/10 21:10:27 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	while (1)
+	while (s1 && *s1 == *s2 && n)
 	{
-		if (*s == c)
-			return ((char *)c);
-		if (*s++ == '\0')
-			return (NULL);
+		s1++;
+		s2++;
+		n--;
 	}
+	if (*s1 == '\0' || *s2 == '\0')
+		return (0)
+	return (1);
 }

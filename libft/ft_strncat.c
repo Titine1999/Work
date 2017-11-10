@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 18:28:01 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/10 18:44:35 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include <libft.h>
+
+char	*ft_strcat(char *restrict s1, const char *restrict s2, size_t n)
 {
-	while (1)
+	len = ft_strlen(s1);
+	*s1 += len;
+	while (*s2 && n > 0)
 	{
-		if (*s == c)
-			return ((char *)c);
-		if (*s++ == '\0')
-			return (NULL);
+		*s1++ = *s2++;
+		len++;
+		n--;
 	}
+	return (*s1 - len);
 }
