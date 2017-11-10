@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 02:13:58 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 02:14:28 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/10 23:14:11 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int		ft_res(char a)
 	return (a >= '0' && a <= '9');
 }
 
-int		ft_resultat(char *str, int i)
+int		ft_resultat(const char *str, int i)
 {
 	int		res;
 

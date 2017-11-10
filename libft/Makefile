@@ -6,7 +6,7 @@
 #    By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/22 15:29:41 by dvalenti          #+#    #+#              #
-#    Updated: 2017/11/10 22:27:55 by dvalenti         ###   ########.fr        #
+#    Updated: 2017/11/10 23:13:30 by dvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,11 +54,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_tolower.c\
 			ft_toupper.c
 
-OBJ=	ft_putchar.o\
-		ft_strcmp.o\
-		ft_strlen.o\
-		ft_putstr.o\
-		ft_swap.o
+OBJ=	$(SRC_FILE:.c=.o)
 
 all: $(NAME)
 
@@ -66,7 +62,7 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-$(OBJ): $(SRC_FILE)
+%.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
