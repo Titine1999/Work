@@ -6,7 +6,7 @@
 #    By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/22 15:29:41 by dvalenti          #+#    #+#              #
-#    Updated: 2017/11/10 22:12:06 by dvalenti         ###   ########.fr        #
+#    Updated: 2017/11/10 22:27:55 by dvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,22 @@ SRC_FILE=	ft_atoi.c\
 			ft_strcat.c\
 			ft_strctr.c\
 			ft_strclr.c\
-
+			ft_strcmp.c\
+			ft_strcpy.c\
+			ft_strdel.c\
+			ft_strdup.c\
+			ft_strequ.c\
+			ft_strlcat.c\
+			ft_strlen.c\
+			ft_strncat.c\
+			ft_strncmp.c\
+			ft_strncpy.c\
+			ft_strnequ.c\
+			ft_strnstr.c\
+			ft_strrchr.c\
+			ft_strtr.c\
+			ft_tolower.c\
+			ft_toupper.c
 
 OBJ=	ft_putchar.o\
 		ft_strcmp.o\
