@@ -6,7 +6,7 @@
 #    By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/22 15:29:41 by dvalenti          #+#    #+#              #
-#    Updated: 2017/11/11 00:18:16 by dvalenti         ###   ########.fr        #
+#    Updated: 2017/11/11 06:44:14 by dvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror -I includes
+HEADER= libft.h
+
+CFLAGS= -Wall -Wextra -Werror
+
+CHEADER= -I $(HEADER)
 
 NAME= libft.a
 
