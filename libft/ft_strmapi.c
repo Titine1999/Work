@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 20:07:18 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:41:13 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/13 20:29:06 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/13 20:35:30 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strmapi(char const *s, char (*f) (unsigned int c, char))
 {
-	char const *d;
+	char	*fs;
+	int		i;
 
-	d = s;
-	while (d && *d != (unsigned char)c && n)
-	{
-		d++;
-		n--;
-	}
-	if (*d == '\0')
+	i = 0;
+	if (!(fs = (char*)malloc(sizeof(char) * (ft_strlen(s)))))
 		return (NULL);
-	return ((char*)d);
+	while (s && i != c)
+	{
+		*fs++ = f(i, *s++);
+		i++;
+	}
+	return (fs);
 }

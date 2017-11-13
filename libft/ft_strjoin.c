@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 20:07:18 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:41:13 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/12 10:51:57 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/12 11:00:32 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char const *d;
+	char	*new;
+	int		len;
 
-	d = s;
-	while (d && *d != (unsigned char)c && n)
-	{
-		d++;
-		n--;
-	}
-	if (*d == '\0')
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(new = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	return ((char*)d);
+	while (s1)
+		*new++ = *s1++;
+	while (s2)
+		*new++ = *s2++;
+	return (new);
 }

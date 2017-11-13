@@ -6,17 +6,16 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 19:28:16 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 23:27:08 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/13 21:47:30 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memccpy(void *restrict dst, const void *restrict src,
-			int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	char *d;
-	char const *s;
+	char			*d;
+	char const		*s;
 
 	d = dst;
 	s = src;

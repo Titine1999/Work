@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 20:07:18 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:41:13 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/13 20:56:32 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/13 20:59:12 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_putnbr(int c)
 {
-	char const *d;
-
-	d = s;
-	while (d && *d != (unsigned char)c && n)
-	{
-		d++;
-		n--;
-	}
-	if (*d == '\0')
-		return (NULL);
-	return ((char*)d);
+	
 }

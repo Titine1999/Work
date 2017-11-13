@@ -6,7 +6,7 @@
 #    By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/22 15:29:41 by dvalenti          #+#    #+#              #
-#    Updated: 2017/11/11 06:44:14 by dvalenti         ###   ########.fr        #
+#    Updated: 2017/11/12 11:44:20 by dvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_memcmp.c\
 			ft_memcpy.c\
 			ft_memdel.c\
+			ft_memmalloc.c\
 			ft_memmove.c\
 			ft_memset.c\
 			ft_putchar.c\
@@ -41,6 +42,8 @@ SRC_FILE=	ft_atoi.c\
 			ft_strcat.c\
 			ft_strchr.c\
 			ft_strclr.c\
+			ft_strjoin.c\
+			ft_strmap.c\
 			ft_strcmp.c\
 			ft_strcpy.c\
 			ft_strdel.c\
@@ -54,7 +57,9 @@ SRC_FILE=	ft_atoi.c\
 			ft_strnequ.c\
 			ft_strnstr.c\
 			ft_strrchr.c\
+			ft_strsub.c\
 			ft_strtr.c\
+			ft_strtrim.c\
 			ft_tolower.c\
 			ft_toupper.c
 
@@ -67,7 +72,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+	$(CC) -c $(CFLAGS) $(CHEADER) $< -o $@
 
 clean:
 	rm -f $(OBJ)

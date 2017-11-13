@@ -6,12 +6,12 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 06:44:27 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/11 07:20:13 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/13 22:08:58 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef
-#define
+#ifndef _LIBFT_H
+#define _LIBFT_H
 
 #include <string.h>
 
@@ -54,6 +54,10 @@ char	*ft_strchr(const char *s, int c);
 
 void	ft_strclr(char *s);
 
+char 	*ft_strjoin(char const *s1, char const *s2):
+
+char	*ft_strmap(char const *s, char (*f) (char));
+
 int		ft_strcmp(const char *s1, const char *s2);
 
 char	*ft_strcpy(char *dst, const char *src);
@@ -76,9 +80,13 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
+char	*ft_strtrim(char const *s);
+
 char	*ft_strchr(const char *s, int c);
 
 char	*ft_strstr(const char *haystack, const char *needle);
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
 
 int		ft_tolower(int c);
 
