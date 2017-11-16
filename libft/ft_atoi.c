@@ -6,16 +6,16 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 02:13:58 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/16 10:38:18 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 11:31:51 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_res(char a)
+static int			ft_res(char a)
 {
 	return (a >= '0' && a <= '9');
 }
 
-int		ft_resultat(const char *str, int i)
+static int			ft_resultat(const char *str, int i)
 {
 	long int		res;
 
@@ -33,7 +33,7 @@ int		ft_resultat(const char *str, int i)
 	return (res);
 }
 
-int		ft_atoi(const char *str)
+int					ft_atoi(const char *str)
 {
 	int				i;
 	int				sign;

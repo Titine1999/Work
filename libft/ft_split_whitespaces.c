@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/19 11:10:00 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/07/25 13:06:19 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 15:10:02 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 15:45:25 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int		ft_strnword(char *str)
+static	int		ft_strnword(char *str)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (*str)
@@ -31,11 +31,11 @@ int		ft_strnword(char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *str)
+static char		*ft_stridup(char *str)
 {
-	int		i;
-	int		l;
-	char	*dest;
+	int			i;
+	int			l;
+	char		*dest;
 
 	l = 0;
 	while (str[l] && str[l] != ' ' && str[l] != '\t' && str[l] != '\n')
@@ -49,11 +49,11 @@ char	*ft_strdup(char *str)
 	return (dest);
 }
 
-char	**ft_split_whitespaces(char *str)
+char			**ft_split_whitespaces(char *str)
 {
-	char	**tab;
-	int		nb;
-	int		boite;
+	char		**tab;
+	int			nb;
+	int			boite;
 
 	nb = ft_strnword(str);
 	if (!(tab = (char**)malloc(sizeof(char*) * (nb + 1))))
@@ -64,7 +64,7 @@ char	**ft_split_whitespaces(char *str)
 		while (*str == ' ' || *str == '\t' || *str == '\n')
 			str++;
 		if (*str != ' ' && *str != '\t' && *str != '\0' && *str != '\n')
-			tab[++boite] = ft_strdup(str);
+			tab[++boite] = ft_stridup(str);
 		while (*str != ' ' && *str != '\t' && *str != '\0' && *str != '\n')
 			str++;
 	}

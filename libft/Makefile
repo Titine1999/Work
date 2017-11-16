@@ -6,7 +6,7 @@
 #    By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/22 15:29:41 by dvalenti          #+#    #+#              #
-#    Updated: 2017/11/16 09:00:49 by dvalenti         ###   ########.fr        #
+#    Updated: 2017/11/16 15:51:20 by dvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,15 @@ SRC_FILE=	ft_atoi.c\
 			ft_isalpha.c\
 			ft_isascii.c\
 			ft_isdigit.c\
+			ft_ispace.c\
 			ft_isprint.c\
 			ft_itoa.c\
+			ft_lstadd.c\
+			ft_lstdel.c\
+			ft_lstdelone.c\
+			ft_lstiter.c\
+			ft_lstnew.c\
+			ft_lstmap.c\
 			ft_memccpy.c\
 			ft_memchr.c\
 			ft_memcmp.c\
@@ -46,6 +53,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_putnbr_fd.c\
 			ft_putstr.c\
 			ft_putstr_fd.c\
+			ft_split_whitespaces.c\
 			ft_strcat.c\
 			ft_strchr.c\
 			ft_strclr.c\
@@ -72,6 +80,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_strsub.c\
 			ft_strstr.c\
 			ft_strtrim.c\
+			ft_swap.c\
 			ft_tolower.c\
 			ft_toupper.c
 
