@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:41:28 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/16 10:41:48 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/10 20:07:18 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 06:53:58 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char buf[len];
-
-	if (len >= 128 * 1024 * 1024)
-		return (NULL);
-	ft_memcpy(buf, src, len);
-	ft_memcpy(dst, buf, len);
-	return (dst);
+	while (n--)
+	{
+		if (*(unsigned char*)s == (unsigned char)c)
+			return ((unsigned char*)s);
+		s++;
+	}
+	return (NULL);
 }

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:41:28 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/16 10:41:48 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 08:22:20 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 09:24:55 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	unsigned char buf[len];
-
-	if (len >= 128 * 1024 * 1024)
-		return (NULL);
-	ft_memcpy(buf, src, len);
-	ft_memcpy(dst, buf, len);
-	return (dst);
+	if (s && fd)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
 }

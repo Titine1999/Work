@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:41:28 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/16 10:41:48 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/15 23:40:15 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/15 23:55:36 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+size_t		ft_strlcat(char *dest, const char *src, size_t n)
 {
-	unsigned char buf[len];
+	size_t	ret;
+	size_t	i;
 
-	if (len >= 128 * 1024 * 1024)
-		return (NULL);
-	ft_memcpy(buf, src, len);
-	ft_memcpy(dst, buf, len);
-	return (dst);
+	i = ft_strlen(dest);
+	ret = i + ft_strlen(src);
+	if (i >= n)
+		return (ret - i + n);
+	--n;
+	while (*src && i != n)
+		dest[i++] = *src++;
+	dest[i] = '\0';
+	return (ret);
 }

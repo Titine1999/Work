@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:41:28 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/16 10:41:48 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/15 23:40:00 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 03:05:10 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	unsigned char buf[len];
+	char				*str;
+	unsigned int		i;
 
-	if (len >= 128 * 1024 * 1024)
+	i = 0;
+	if (s == NULL)
 		return (NULL);
-	ft_memcpy(buf, src, len);
-	ft_memcpy(dst, buf, len);
-	return (dst);
+	if (start > (unsigned int)ft_strlen(s))
+		return (NULL);
+	else if (!(str = (char*)malloc(sizeof(*str) * (len + 1))))
+		return (0);
+	while (i < len)
+	{
+		str[i] = s[start];
+		i++;
+		start++;
+	}
+	str[i] = '\0';
+	return (str);
 }
