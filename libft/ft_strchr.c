@@ -6,16 +6,18 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 02:00:07 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:00 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 09:40:44 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
 	while (1)
 	{
 		if (*s == c)
-			return ((char *)c);
+			return ((char *)s);
 		if (*s++ == '\0')
 			return (NULL);
 	}

@@ -6,15 +6,17 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 20:58:17 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 21:14:14 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 09:25:34 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
 void	ft_memdel(void **ap)
 {
-	Free(*ap);
-	*ap = NULL;
+	if (ap)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

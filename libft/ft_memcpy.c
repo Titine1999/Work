@@ -6,19 +6,19 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 19:07:52 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 23:23:55 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 09:46:36 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char *d;
-	char *s;
+	char		*d;
+	char		*s;
 
-	d = dst;
-	s = src;
+	d = (char*)dst;
+	s = (char*)src;
 	while (n)
 	{
 		*d++ = *s++;

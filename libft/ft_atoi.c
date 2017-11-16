@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 02:13:58 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 20:59:22 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/14 21:41:33 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_res(char a)
 
 int		ft_resultat(const char *str, int i)
 {
-	int		res;
+	long int		res;
 
 	res = 0;
 	while (str[i])
@@ -37,7 +37,7 @@ int		ft_atoi(const char *str)
 {
 	int		i;
 	int		sign;
-	int		res;
+	long int		res;
 
 	i = 0;
 	res = 0;

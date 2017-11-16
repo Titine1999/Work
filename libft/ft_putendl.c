@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/12 09:40:48 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/12 09:45:48 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 08:46:40 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 08:48:50 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 void	ft_putendl(char const *s)
 {
-	while (s)
-	write(1, *s++,);
-	write(1, '\n', 1);
+	ft_putendl_fd(s, 1);
 }

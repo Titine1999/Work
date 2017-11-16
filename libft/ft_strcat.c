@@ -5,21 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 17:50:52 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:32:39 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 00:01:04 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 09:32:52 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	len = ft_strlen(s1);
-	*s1 += len;
-	while (*s2)
+	int i;
+	int l;
+
+	l = 0;
+	i = 0;
+	while (s1[l] != '\0')
+		l++;
+	while (s2[i] != '\0')
 	{
-		*s1++ = *s2++;
-		len++;
+		s1[l + i] = s2[i];
+		i++;
 	}
-	return (*s1 - len);
+	s1[l + i] = '\0';
+	return (s1);
 }

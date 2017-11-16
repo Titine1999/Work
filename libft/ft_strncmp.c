@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 03:39:39 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/09 23:17:19 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/14 20:06:46 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/14 20:07:16 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const	char *s1, const char *s2, size_t n)
+#include "libft.h"
+
+int		ft_strncmp(const	char *s1, const char *s2, size_t n)
 {
 	unsigned int	i;
 

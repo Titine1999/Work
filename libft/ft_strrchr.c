@@ -6,30 +6,24 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 02:34:03 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 18:31:05 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 09:44:52 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	int		len;
+	char*	res;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	int		len;
-
-	len = ft_strlen(s) - 1;
-	while (len > 0)
+	res = NULL;
+	while (*s)
 	{
-		if (s[len] == c)
-			return ((char *)c);
-		len--;
+		if (*s == (char)c)
+			res = (char*)&(*s);
+		s++;
 	}
-	return (NULL);
+	if (*s == (char)c)
+		res = (char*)&(*s);
+	return (res);
 }

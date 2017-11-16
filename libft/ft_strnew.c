@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/12 10:25:08 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:43:42 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 00:16:14 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 05:31:26 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,5 @@
 
 char	*ft_strnew(size_t size)
 {
-	char	*new;
-
-	if (!(new = (char*)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	while (new)
-		*new++ = '\0';
-	return (new);
+	return ((char*)ft_memalloc(sizeof(char) * (size + 1)));
 }

@@ -5,21 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 00:16:00 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 00:18:04 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/15 23:56:03 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 00:00:30 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src, size_t len)
+#include "libft.h"
+
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	int		i;
+	unsigned int	i;
 
 	i = 0;
-	while (src[i] != '\0' && i < (len - 1))
+	while (src[i] && i < len)
 	{
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
 	return (dst);
 }

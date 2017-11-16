@@ -6,12 +6,16 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 21:11:31 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:48:26 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 09:23:30 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_strclr(char *s)
 {
-	while (s)
-		*s++ = '\0';
+	if (s)
+	{
+	ft_bzero(s, ft_strlen(s));
+	}
 }

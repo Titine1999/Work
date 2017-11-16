@@ -5,37 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 00:26:01 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/10 19:04:33 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 05:52:36 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 07:28:38 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
-
-int		ft_strcmp(const char *s1, const char *s2)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (s1[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int		i;
+	int 	i;
+	int 	x;
+	int 	y;
+	size_t 	len;
 
 	i = 0;
-	if (needle[0] == '\0')
-		return (haystack);
-	while (*haystack)
+	y = 0;
+	if (!(len = ft_strlen(needle)))
+		return ((char*)haystack);
+	while (haystack[i])
 	{
-		if (!(ft_strcmp(haystack, needle)
-			return (needle);
-		haystack++;
+		x = i;
+		y = 0;
+		while (haystack[x] == needle[y])
+		{
+			x++;
+			y++;
+			if (needle[y] == '\0')
+				return ((char*)&haystack[i]);
+		}
+		i++;
 	}
-return (0);
+	return (0);
 }

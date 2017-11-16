@@ -5,42 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/12 11:48:34 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:39:03 by dvalenti         ###   ########.fr       */
+/*   Created: 2017/11/16 01:06:27 by dvalenti          #+#    #+#             */
+/*   Updated: 2017/11/16 09:17:57 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_countwords(char const *s)
+static int		ft_strcnword(const char *str, char c)
 {
-	int		l;
+	int		i;
 
-	while (s)
+	i = 0;
+	while (*str)
 	{
-		while (*s != ' ' && *s != '\t' && *s != '\n')
-			*s++;
-		l++;
-		while (*s == ' ' || *s == '\t' || *s == '\n')
-			*s++;
+		while (*str && (*str == c))
+			str++;
+		if (*str && *str != c)
+		{
+			i++;
+			while (*str && *str != c)
+				str++;
+		}
 	}
-	return (l);
+	return (i);
 }
 
-char	**ft_strsplit(char const *s, char c)
+static char		*ft_strcdup(const char *str, char c)
 {
-	char	**new;
-	int		len;
+	int		i;
+	int		l;
+	char	*dest;
 
-	len = ft_countwords(s);
-	if (!(new = (char**)malloc(sizeof(char*) * (len + 1))))
+	l = 0;
+	while (str[l] && str[l] != c)
+		l++;
+	if (!(dest = (char*)malloc(sizeof(dest) * (l + 1))))
 		return (NULL);
-	while (s)
+	i = -1;
+	while (++i < l)
+		dest[i] = str[i];
+	dest[i] = 0;
+	return (dest);
+}
+
+char	**ft_strsplit(const char *s, char c)
+{
+	char	**tab;
+	int		nb;
+	int		boite;
+
+	if (!s || !c)
+		return (NULL);
+	nb = ft_strcnword(s, c);
+	if (!(tab = (char**)malloc(sizeof(char*) * (nb + 1))))
+		return (NULL);
+	boite = 0;
+	while (boite < nb)
 	{
-		while (*s != ' ' && *s != '\t' && *s != '\n')
-			**new++ = *s++;
-		if (*s == ' ' || *s == '\t' || *s == '\n')
-			*new++;
+		while (*s == c)
+			s++;
+		if (*s != c)
+			tab[boite++] = ft_strcdup(s, c);
+		while (*s != c)
+			s++;
 	}
-	return (new);
+	tab[nb] = 0;
+	return (tab);
 }

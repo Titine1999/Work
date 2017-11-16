@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 09:22:56 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:37:53 by dvalenti         ###   ########.fr       */
+/*   Updated: 2017/11/16 09:06:32 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,20 @@
 char	*ft_strmap(char const *s, char (*f) (char))
 {
 	char	*fs;
+	int		i;
 
-	if (!(fs = (char*)malloc(sizeof(char) * (ft_strlen(s)))))
-		return (NULL);
-	while (s)
-		*fs++ = f(*s++);
-	return (fs);
+	if(s && f)
+	{
+		i = 0;
+		if (!(fs = ft_strnew(ft_strlen(s))))
+			return (NULL);
+		while (s[i])
+		{
+			fs[i] = f(s[i]);
+			i++;
+		}
+		fs[i] = '\0';
+		return (fs);
+	}
+	return (NULL);
 }
