@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:40:43 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/12/21 05:25:21 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:01:17 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int		main(int ac, char **av)
 	int		i;
 	char 	*line;
 	
-	if (ac > 1)
-	{
 	//	while (i < ac)	
 	//	{
 			fd = open(av[1], O_RDONLY);
@@ -36,6 +34,5 @@ int		main(int ac, char **av)
 		//	get_next_line(fd, line);
 	//	  }
 	//	i++;
-		}	
 	return (0);
 }

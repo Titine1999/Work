@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:41:10 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/12/21 04:30:01 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:29:32 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 typedef struct		s_mem
 {
-	int		res;
+	int		fd;
+	int		patch;
 	char	*rest;
 	struct s_mem	*next;
 }					t_mem;
