@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 17:54:09 by dvalenti          #+#    #+#             */
-/*   Updated: 2018/01/12 17:58:03 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/12 18:00:16 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ t_mem    *new_list(int fd)
 int     gnl_core(int fd, char **line, char *lsi, t_mem *ptr)
 {
 	int     ret;
-	char    buf[BUFF_SIZE + 1];
+	char    *buf = NULL;
 
-	if (ptr->rest)
-		ptr->rest = NULL;
+	if ((ptr->rest && !(ptr->rest = NULL)) || (buf == NULL && !(buf = (char*)ft_memalloc(BUFF_SIZE + 1))))
+		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		if ((ret == 0 && !*lsi) || ret < 0)
@@ -48,13 +48,9 @@ int     gnl_core(int fd, char **line, char *lsi, t_mem *ptr)
 
 int   fill_rest(char *lsi, char *tmp, t_mem *ptr, char **line)
 {
-	if ((ft_strchr(tmp, '\n') != '\0') && (*line = ft_strjoin(lsi,   
-					ft_strsub(tmp, 0, ft_strchr(tmp, '\n') - tmp))) 
-			&& (ptr->rest = ft_strdup(ft_strchr(tmp, '\n') + 1)))
+	if ((ft_strchr(tmp, '\n') != '\0') && (*line = ft_strjoin(lsi, ft_strsub(tmp, 0, ft_strchr(tmp, '\n') - tmp))) && (ptr->rest = ft_strdup(ft_strchr(tmp, '\n') + 1)))
 		return (1);
-	return ((lsi && *lsi) ? gnl_core(ptr->fd, line, 
-				ft_strjoin(lsi, tmp), ptr) : 
-			gnl_core(ptr->fd, line, ft_strdup(tmp), ptr));
+	return ((lsi && *lsi) ? gnl_core(ptr->fd, line, ft_strjoin_free(lsi, tmp, 1), ptr) : gnl_core(ptr->fd, line, ft_strdup(tmp), ptr));
 }
 
 int     get_next_line(int fd, char **line)

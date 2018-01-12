@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:41:10 by dvalenti          #+#    #+#             */
-/*   Updated: 2018/01/12 12:25:12 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/12 17:28:56 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ typedef struct		s_mem
 }					t_mem;
 
 int					get_next_line(const int fd, char **line);
-int					fill_rest(char *lsi, t_mem *ptr, char **line, int ret);
+int					fill_rest(char *lsi, char *tmp, t_mem *ptr, char **line);
 int					gnl_core(int fd, char **line, char *lsi, t_mem *ptr);
 #endif
