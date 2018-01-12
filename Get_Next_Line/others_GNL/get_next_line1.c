@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 17:54:09 by dvalenti          #+#    #+#             */
-/*   Updated: 2018/01/12 06:45:51 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/12 11:16:05 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int     gnl_core(int fd, char **line, char *lsi, t_mem *ptr)
 		tmp = lsi;
 		lsi = ft_strjoin(lsi, buf); 
 		free(tmp);
+		tmp = NULL;
 	}
 	return (fill_rest(lsi, ptr, line, ret));
 }
@@ -50,11 +51,12 @@ int		fill_rest(char *tmp, t_mem *ptr, char **line, int ret)
 	if (ret == 0 && !*tmp)
 		return (0);
 	if (!(newline = ft_strchr(tmp, '\n')) && (*line = tmp) == tmp)
-		return ((ret == 0) ? 0 : 1);
+		return (1);
 	*newline = '\0';
 	*line = ft_strdup(tmp);
 	ptr->rest = ft_strdup(newline + 1);
 	free(tmp);
+	tmp = NULL;
 	return (1);	
 }	
 
@@ -67,18 +69,21 @@ int     get_next_line(int fd, char **line)
 	if (fd < 0 || fd > 10024 || (!mem && !(mem = new_list(fd))) ||
 			!(lsi = (char*)ft_memalloc(1)))
 		return (-1);
-	if (*line)
-		free(*line);
+	if (!line)
+		return (-1);
 	ptr = mem;
-	while (ptr && ptr->next && ptr->fd != fd)
+	while (ptr->next && ptr->fd != fd)
 		ptr = ptr->next;
 	if (ptr->fd != fd && !(ptr->next = new_list(fd)))
 		return (-1);
+	ptr = (ptr->fd == fd) ? ptr : ptr->next;
 	if (ptr->rest)
 	{
 		free(lsi);
+		lsi = NULL;
 		lsi = ft_strdup(ptr->rest);
 		free(ptr->rest);
+		ptr->rest = NULL;
 	}
 	return (gnl_core(fd, line, lsi, ptr));
 }
