@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 02:38:25 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/13 21:35:49 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/23 06:15:04 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
+#include <stdio.h>
 
 void	ft_putstr(char *str)
 {
@@ -52,6 +53,7 @@ int		ft_display_file(char **av)
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		buf[ret] = '\0';
+		printf("%d\n", ret);
 		ft_putstr(buf);
 	}
 	if (close(fd) == -1)

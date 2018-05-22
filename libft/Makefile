@@ -6,7 +6,7 @@
 #    By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/22 15:29:41 by dvalenti          #+#    #+#              #
-#    Updated: 2017/11/16 15:51:20 by dvalenti         ###   ########.fr        #
+#    Updated: 2017/11/17 23:36:49 by dvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_putstr.c\
 			ft_putstr_fd.c\
 			ft_split_whitespaces.c\
+			ft_sqrt.c\
 			ft_strcat.c\
 			ft_strchr.c\
 			ft_strclr.c\
@@ -76,6 +77,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_strnew.c\
 			ft_strnstr.c\
 			ft_strrchr.c\
+			ft_strrev.c\
 			ft_strsplit.c\
 			ft_strsub.c\
 			ft_strstr.c\
@@ -84,7 +86,7 @@ SRC_FILE=	ft_atoi.c\
 			ft_tolower.c\
 			ft_toupper.c
 
-OBJ=	$(SRC_FILE:.c=.o)
+OBJ= $(SRC_FILE:.c=.o)
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: dvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 06:44:27 by dvalenti          #+#    #+#             */
-/*   Updated: 2017/11/16 15:51:00 by dvalenti         ###   ########.fr       */
+/*   Updated: 2018/01/13 23:58:12 by dvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void					ft_putstr_fd(char const *s, int fd);
 
 char					**ft_split_whitespaces(char *str);
 
+int						ft_sqrt(int nb);
+
 void					ft_putnbr_fd(int n, int fd);
 
 char					*ft_strcat(char *s1, const char *s2);
@@ -140,6 +142,8 @@ char					*ft_strnstr(const char *haystack, const char *needle,
 char					*ft_strtrim(char const *s);
 
 char					*ft_strrchr(const char *s, int c);
+
+char					*ft_strrev(char *str);
 
 char					**ft_strsplit(char const *s, char c);
 

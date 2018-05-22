@@ -1,0 +1,2 @@
+#!/bin/sh
+dig +short slash16.org

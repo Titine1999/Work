@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /etc/passwd | sed 's/:/ /g' | awk '{print "\033[31mLogin= \033[0m" $1, "\033[33mUID= \033[0m" $3, "\033[32mPath= \033[0m" $6}'

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+FILE=/etc/crontab
+FILE2=/home/metropolix/frame/md5comp.txt
+
+if [ -f "$FILE2" ]; then
+	if [ "$(md5sum $FILE)" != "$(cat $FILE2)" ]; then
+		`mail -s "Le fichier Crontab a ete modifie" root@debian < /dev/null`
+		`md5sum "$FILE" > "$FILE2"`
+	fi
+else
+	`touch "$FILE2"`
+	`md5sum "$FILE" >> "$FILE2"`
+fi

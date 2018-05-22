@@ -1,0 +1,2 @@
+#!/bin/sh
+dig +short @8.8.8.8 slash16.org
