@@ -2,10 +2,9 @@ FROM debian
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y sudo build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libre2-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate rsync python-docutils pkg-config cmake git-core
 RUN mkdir /tmp/ruby && cd /tmp/ruby
-RUN curl --remote-name --progress https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.4.tar.gz
-RUN echo 'ec82b0d53bd0adad9b19e6b45e44d54e9ec3f10c  ruby-2.4.4.tar.gz' | shasum -c - && tar xzf ruby-2.4.4.tar.gz
-
-WORKDIR ruby-2.4.4
+RUN curl --remote-name --progress https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.3.tar.gz
+RUN echo 'fd0375582c92045aa7d31854e724471fb469e11a4b08ff334d39052ccaaa3a98  ruby-2.4.3.tar.gz' | shasum -c - && tar xzf ruby-2.4.3.tar.gz
+WORKDIR ruby-2.4.3
 
 RUN ./configure --disable-install-rdoc
 RUN make
@@ -26,12 +25,12 @@ RUN apt-get update && apt-get install -y yarn
 RUN adduser --disabled-login --gecos 'GitLab' git
 
 RUN apt-get install -y postgresql postgresql-client libpq-dev postgresql-contrib
-RUN service postgresql start && sudo -u postgres psql -d template1 -c "CREATE USER git CREATEDB;" && sudo -u postgres psql -d template1 -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;" && sudo -u postgres psql -d template1 -c "CREATE DATABASE gitlabhq_production OWNER git;" && echo "SELECT true AS enabled\nFROM pg_available_extensions\nWHERE name = 'pg_trgm'\nAND installed_version IS NOT NULL;" | sudo -u git -H psql -d gitlabhq_production
+RUN service postgresql start && sudo -u postgres psql -d template1 -c "CREATE USER git WITH PASSWORD 'prout' CREATEDB;" && sudo -u postgres psql -d template1 -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;" && sudo -u postgres psql -d template1 -c "CREATE DATABASE gitlabhq_production OWNER git;" && echo "SELECT true AS enabled\nFROM pg_available_extensions\nWHERE name = 'pg_trgm'\nAND installed_version IS NOT NULL;" | sudo -u git -H psql -d gitlabhq_production
 
 RUN apt-get install -y redis-server
-
+COPY --chown=redis:redis ./redis.conf /etc/redis/redis.conf
 WORKDIR /home/git
-RUN sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-ce.git -b 11-1-stable gitlab
+RUN sudo -u git -H git clone https://gitlab.com/gitlab-org/gitlab-ce.git -b 10-1-stable gitlab
 
 WORKDIR /home/git/gitlab/
 COPY --chown=git:git ./gitlab.yml ./config
@@ -46,5 +45,4 @@ RUN sudo -u git -H chmod o-rwx config/database.yml
 RUN sudo -u git -H bundle install --deployment --without development test mysql aws kerberos
 RUN service redis-server start && sudo -u git -H bundle exec rake gitlab:shell:install REDIS_URL=unix:/var/run/redis/redis.sock RAILS_ENV=production SKIP_STORAGE_VALIDATION=true
 RUN sudo -u git -H bundle exec rake "gitlab:workhorse:install[/home/git/gitlab-workhorse]" RAILS_ENV=production
-
-
+RUN service postgresql start && service redis-server start && echo "yes" | sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production
