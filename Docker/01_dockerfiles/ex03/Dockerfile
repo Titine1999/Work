@@ -56,6 +56,10 @@ RUN mkdir -p /etc/nginx/ssl/ && cd /etc/nginx/ssl/ && yes ye | sudo openssl req 
 
 RUN rm /etc/nginx/conf.d/default.conf && service postgresql start && service redis-server start && service gitlab start && service nginx start  &&  mkdir ~/gitlab-check-backup-1531743619 && sudo mv /home/git/.ssh/environment ~/gitlab-check-backup-1531743619 && sudo chmod -R ug+rwX,o-rwx /home/git/repositories && sudo chmod -R ug-s /home/git/repositories && sudo find /home/git/repositories -type d -print0 | sudo xargs -0 chmod g+s && sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production 
 
+COPY ./server.sh /server.sh
+RUN chmod 755 /server.sh
+ENTRYPOINT sh /server.sh
+
 EXPOSE 443
 EXPOSE 80
 EXPOSE 2222
