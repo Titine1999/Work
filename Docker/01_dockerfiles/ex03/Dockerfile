@@ -46,3 +46,11 @@ RUN sudo -u git -H bundle install --deployment --without development test mysql 
 RUN service redis-server start && sudo -u git -H bundle exec rake gitlab:shell:install REDIS_URL=unix:/var/run/redis/redis.sock RAILS_ENV=production SKIP_STORAGE_VALIDATION=true
 RUN sudo -u git -H bundle exec rake "gitlab:workhorse:install[/home/git/gitlab-workhorse]" RAILS_ENV=production
 RUN service postgresql start && service redis-server start && echo "yes" | sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production
+RUN sudo cp lib/support/init.d/gitlab /etc/init.d/gitlab && sudo update-rc.d gitlab defaults 21
+RUN service postgresql start && service redis-server start && sudo -u git -H bundle exec rake "gitlab:gitaly:install[/home/git/gitaly]" RAILS_ENV=production && sudo chmod 0700 /home/git/gitlab/tmp/sockets/private && sudo chown git /home/git/gitlab/tmp/sockets/private && sudo cp lib/support/logrotate/gitlab /etc/logrotate.d/gitlab && sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production
+RUN sudo -u git -H bundle exec rake gettext:compile RAILS_ENV=production && sudo -u git -H yarn install --production --pure-lockfile && sudo -u git -H bundle exec rake gitlab:assets:compile RAILS_ENV=production NODE_ENV=production
+RUN service postgresql start && service redis-server start && sudo service gitlab start && echo "deb http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list && echo "deb-src http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list && apt-get update && sudo apt-get install -y --allow-unauthenticated nginx
+COPY ./gitlab /etc/nginx/conf.d/gitlab.conf
+RUN rm /etc/nginx/conf.d/default.conf && service postgresql start && service redis-server start && service gitlab start && service nginx start  &&  mkdir ~/gitlab-check-backup-1531743619 && sudo mv /home/git/.ssh/environment ~/gitlab-check-backup-1531743619 && sudo chmod -R ug+rwX,o-rwx /home/git/repositories && sudo chmod -R ug-s /home/git/repositories && sudo find /home/git/repositories -type d -print0 | sudo xargs -0 chmod g+s && sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production 
+
+
