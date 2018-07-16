@@ -50,7 +50,13 @@ RUN sudo cp lib/support/init.d/gitlab /etc/init.d/gitlab && sudo update-rc.d git
 RUN service postgresql start && service redis-server start && sudo -u git -H bundle exec rake "gitlab:gitaly:install[/home/git/gitaly]" RAILS_ENV=production && sudo chmod 0700 /home/git/gitlab/tmp/sockets/private && sudo chown git /home/git/gitlab/tmp/sockets/private && sudo cp lib/support/logrotate/gitlab /etc/logrotate.d/gitlab && sudo -u git -H bundle exec rake gitlab:env:info RAILS_ENV=production
 RUN sudo -u git -H bundle exec rake gettext:compile RAILS_ENV=production && sudo -u git -H yarn install --production --pure-lockfile && sudo -u git -H bundle exec rake gitlab:assets:compile RAILS_ENV=production NODE_ENV=production
 RUN service postgresql start && service redis-server start && sudo service gitlab start && echo "deb http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list && echo "deb-src http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list && apt-get update && sudo apt-get install -y --allow-unauthenticated nginx
-COPY ./gitlab /etc/nginx/conf.d/gitlab.conf
+COPY ./gitlab-ssl /etc/nginx/conf.d/gitlab-ssl.conf
+COPY ./config.yml /home/git/gitlab-shell/config.yml
+RUN mkdir -p /etc/nginx/ssl/ && cd /etc/nginx/ssl/ && yes ye | sudo openssl req -newkey rsa:2048 -x509 -nodes -days 3560 -out gitlab.crt -keyout gitlab.key && sudo chmod o-r gitlab.key
+
 RUN rm /etc/nginx/conf.d/default.conf && service postgresql start && service redis-server start && service gitlab start && service nginx start  &&  mkdir ~/gitlab-check-backup-1531743619 && sudo mv /home/git/.ssh/environment ~/gitlab-check-backup-1531743619 && sudo chmod -R ug+rwX,o-rwx /home/git/repositories && sudo chmod -R ug-s /home/git/repositories && sudo find /home/git/repositories -type d -print0 | sudo xargs -0 chmod g+s && sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production 
 
+EXPOSE 443
+EXPOSE 80
+EXPOSE 2222
 
